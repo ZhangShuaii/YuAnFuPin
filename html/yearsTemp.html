@@ -23,6 +23,8 @@
     <section class="container" style="width: 90%;">
       <div class="row">
         <div class="col-lg-12">
+        <br>
+        <div class="alert alert-info" role="alert">此次疑点查询日期： {{checkTime | date}}</div>
           <table class="table table-bordered table-hover questionTable ">
             <thead>
               <tr >
@@ -30,8 +32,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for = "(line,index) in tabs" v-if="index!=0" @mouseenter="tableHover(index)" v-bind:class="{'info':hoverItem == index}">
-                <td v-for="cell in line">{{cell}}</td>
+              <tr v-for = "(line,index) in tabs" v-if="index!=0"  v-bind:class="{'info':hoverLine == index}">
+                <td v-for="(cell,index2) in line" @mouseenter="tableHover(index,index2)" v-bind:class="{'info':hoverCol == index2}">{{cell}}</td>
               </tr>
             </tbody>
           </table>

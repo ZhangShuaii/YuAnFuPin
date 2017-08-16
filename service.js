@@ -148,9 +148,6 @@ exports.getQuestionTabs = function(postData,res){
 exports.getQuestionTab = function(postData,res){
 	year = postData.year;
 	questionTabDB.getTabs(year,function(results){
-		res.send({
-			status:results.status,
-			results:results.results.pop()
-		});
+		res.send(results);
 	});
 };

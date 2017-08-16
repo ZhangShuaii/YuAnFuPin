@@ -15,3 +15,7 @@ header{
 .nav-tabs{
 	margin-top: 10px;
 }
+
+table{
+	cursor: pointer;
+}
