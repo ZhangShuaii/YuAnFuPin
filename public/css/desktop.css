@@ -1,0 +1,118 @@
+.trans{
+	transition: all 1s;
+	-moz-transition: all 1s;	
+	-webkit-transition: all 1s;	
+	-o-transition: all 1s;
+}
+
+
+.trans-fast{
+	transition: all .5s;
+	-moz-transition: all .5s;	
+	-webkit-transition: all .5s;	
+	-o-transition: all .5s;
+}
+
+
+.trans-slow{
+	transition: all 1.5s;
+	-moz-transition: all 1.5s;	
+	-webkit-transition: all 1.5s;	
+	-o-transition: all 1.5s;
+}
+
+.app-list{
+	position: fixed;
+	/*bottom: -100px;*/
+	bottom: 15px;
+	width: 100%;
+	text-align: center;
+}
+
+.app-item{
+	display: inline-block;
+	margin-right: 30px;
+	cursor: pointer;
+}
+
+.app-item a{
+	display: block;
+	text-decoration: none;
+}
+
+.app-item .app-img{
+	width: 50px;
+	margin-bottom: 5px;
+}
+
+.app-item .app-img:hover{
+	transform: scale(2);
+}
+
+.app-item .app-name{
+	width: 100%;
+    height: 16px;
+    line-height: 16px;
+    color: #fff;
+    font-size: 16px;
+    display: block;
+    letter-spacing: 1px;
+}
+
+.desktop-welcome{
+	-webkit-user-select:none; 
+	-moz-user-select:none; 
+	-ms-user-select:none; 
+	user-select:none;
+	text-align: center;
+	font-size: 140px;
+	line-height: 140px;
+	color: #fff;
+	letter-spacing: 50px;
+	word-spacing: 15px;
+	margin-top: -50px;
+	position: fixed;
+	top: 40%;
+	left: 0;
+	width: 100%;
+	/*font-family: serif;*/
+	font-family: cursive;
+}
+/*body{
+	background-color:springgreen;
+}*/
+.color0{
+	background-color: darkturquoise;
+}
+
+.color1{
+	background-color: aqua;
+}
+
+.color2{
+	background-color: teal;
+}
+
+.color3{
+	background-color: sandybrown;
+}
+
+.color4{
+	background-color: black;
+}
+
+.color5{
+	background-color: burlywood;
+}
+
+.color6{
+	background-color: chocolate;
+}
+
+.color7{
+	background-color: springgreen;
+}
+
+.color8{
+	background-color: turquoise;
+}

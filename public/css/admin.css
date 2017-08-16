@@ -1,0 +1,33 @@
+.admin-header{
+	position: relative;
+	text-align: center;
+	background-color: #27ae60;
+	color: #fff;
+	padding: 10px;
+}
+
+.admin-header .header-nav{
+	text-align: left;
+}
+
+.admin-header .logo{
+	color: #fff;
+	font-size: 22px;
+	margin-left: 50px;
+	line-height: 40px;
+	text-decoration: none;
+	font-family: 'Comic Sans MS'
+}
+
+article{
+	padding: 25px;
+	font-size: 14px;
+}
+
+section h2{
+	padding-bottom: 20px;
+}
+
+#adminPage .btn{
+	margin-left: 15px;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>裕安扶贫</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <style type="text/css">
+  </style>
+  <body>
+    <div class="container index-h1">
+      <h1 class="text-center  text-primary">裕 安 扶 贫</h1>
+    </div>    
+      <div class="container">
+        <form  id="loginForm" class="form-signin" v-on:submit.prevent="login">
+
+          <label for="inputEmail" class="sr-only">账号</label>
+          <input type="userId" id="inputEmail" class="form-control" placeholder="账号" required autofocus value="" v-model="userId">
+
+          <label for="inputPassword" class="sr-only">密码</label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="密码" required v-model="password">
+
+          <label for="newPassword" class="sr-only" v-if="isChangePwd">新密码</label>
+          <input type="password" id="newPassword"  v-if="isChangePwd" class="form-control" placeholder="请输入新密码" required v-model="newPassword">
+
+          <label for="newPassword2" class="sr-only" v-if="isChangePwd">新密码</label>
+          <input type="password" id="newPassword2"  v-if="isChangePwd" class="form-control" 
+          placeholder="请再次输入新密码" required v-model="newPassword2">
+          <div class="checkbox">
+            <label v-if="!isChangePwd">
+              <input type="checkbox" v-model="isSave" > 记住我
+            </label>
+            <a class="btn  btn-link" v-on:click="toChangePwd" v-if="!isChangePwd">修改密码</a>
+            <a class="btn  btn-link" v-on:click="toChangePwd" v-if="isChangePwd">返回登录</a>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block"  type="submit" v-if="!isChangePwd">登录</button>
+          <button class="btn btn-lg btn-primary btn-block" v-on:click="changePwd" v-if="isChangePwd">修改密码</button>
+        </form>
+      </div>
+  </body>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <script src="js/vue-resource.js"></script>
+  <script type="text/javascript" src="js/md5.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+</html>

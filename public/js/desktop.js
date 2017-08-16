@@ -1,0 +1,39 @@
+var desktopVue = new Vue({
+	el:"#menu",
+	data :{
+		menu:[{
+			name:'2015数据库',
+			imgSrc:'/img/2015.png',
+			link:'/2015'
+		},
+		{
+			name:'2016数据库',
+			imgSrc:'/img/2016.png',
+			link:'/2016'
+		},
+		{
+			name:'2017数据库',
+			imgSrc:'/img/2017.png',
+			link:'/2017'
+		},
+		{
+			name:'贫困户信息',
+			imgSrc:'/img/fupinLogo3.png',
+			link:'/poorSelect'
+		},
+		{
+			name:'批量查询',
+			imgSrc:'/img/batchFind.ico',
+			link:'/batchFind'
+		},
+		{
+			name:'账号信息',
+			imgSrc:'/img/i.ico',
+			link:'/i'
+		}],
+	},
+	mounted:function(){
+		var index = Math.random()*6|0;
+		document.body.setAttribute('class','color'+index)
+	}
+});

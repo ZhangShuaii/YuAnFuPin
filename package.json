@@ -1,0 +1,22 @@
+{
+  "name": "yuanfupin",
+  "version": "1.0.0",
+  "description": "裕安区扶贫监测系统",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "vue"
+  ],
+  "author": "shuai",
+  "license": "ISC",
+  "dependencies": {
+    "exceljs": "^0.5.0",
+    "express": "^4.15.3",
+    "js-md5": "^0.5.0",
+    "mongodb": "^2.2.30",
+    "mongoskin": "^2.1.0"
+  }
+}

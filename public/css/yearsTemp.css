@@ -1,0 +1,17 @@
+header{
+	background-color: darkturquoise;
+	height: 120px;
+	color: #fff;
+	text-align: center;
+	font-size: 36px;
+	line-height: 120px;
+	letter-spacing: 5px;
+}
+
+.questionTable{
+	margin-top: 30px;
+}
+
+.nav-tabs{
+	margin-top: 10px;
+}

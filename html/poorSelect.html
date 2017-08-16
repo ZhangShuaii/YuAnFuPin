@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>贫困户查询</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/poor.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <style type="text/css">
+  </style>
+  <body>
+    <article id="poorSelect">
+      <div class="container ">
+        <h2 class="text-center col-xl-12">贫困户查询</h2>
+        <form class="form-inline" v-on:submit.prevent="selectPoor">
+          <div class="form-group">
+              <label for="newUserOrg">乡镇</label>
+              <select class="form-control" v-model="poor.townCode" v-bind:disabled="poor.limitTownCode!=341503000000">
+                <option v-for="(town,item) in townMap" v-bind:value="item" >{{town}}</option>
+              </select>
+          </div>
+
+          <div class="form-group">
+              <label for="name">贫困户姓名</label>
+              <input type="text" class="form-control" id="name" placeholder="姓名" v-model="poor.name" >
+          </div>
+
+          <div class="form-group">
+              <label for="idNumber">身份证号码</label>
+              <input type="text" class="form-control" id="idNumber" placeholder="证件号码" v-model="poor.idNumber" >
+          </div>
+
+          <button class="btn btn-default btn-primary "  type="submit" >查询</button>
+        </form>
+      <br>
+      <table class="table table-bordered table-hover questionTable ">
+        <thead>
+          <tr >
+            <th >乡镇</th>
+            <th >姓名</th>
+            <th >身份证号码</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for = "(resultPoor,index) in poorList"  @click="linkPoor(resultPoor.familyCode)" >
+            <td >{{resultPoor.townName}}</td>
+            <td >{{resultPoor.name}}</td>
+            <td >{{resultPoor.idNumber}}</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      
+    <div class="loading" v-show="isLoading">查询中...</div>
+    </article>
+  </body>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <script src="js/vue-resource.js"></script>
+  <script type="text/javascript" src="js/const.js"></script>
+  <script type="text/javascript" src="js/login.js"></script>
+  <script type="text/javascript" src="js/poor.js"></script>
+</html>

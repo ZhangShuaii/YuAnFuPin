@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>贫困户信息</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/poorFamily.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <style type="text/css">
+  </style>
+  <body>
+    <article id="poorFamily">
+      <div class="container ">
+        <h2>贫困户信息</h2>
+        <section>
+          <div class="alert alert-info" role="alert">家庭主要信息</div>
+            <ul class="list-group">
+              <li class="list-group-item"><strong>乡镇：</strong>{{poorFamily.townName}}</li>
+              <li class="list-group-item"><strong>行政村：</strong>{{poorFamily.villageName}}</li>
+              <li class="list-group-item"><strong>是否脱贫：</strong>{{poorFamily.isOut | isOut}}</li>
+              <li class="list-group-item" v-if="poorFamily.isOut==1"><strong>脱贫年度：</strong>{{poorFamily.outPoorYear}}</li>
+              <li class="list-group-item"><strong>贫困户属性：</strong>{{poorFamily.poorAttr | poorAttr}}</li>
+              <li class="list-group-item"><strong>主要致贫原因：</strong>{{poorFamily.mainReason | mainReason}}</li>
+            </ul>
+        </section>
+
+        <section>
+          <div class="alert alert-info" role="alert">成员信息</div>
+            <ul class="list-group" v-for="poor in poorFamily.poorFamilyMember">
+              <li class="list-group-item"><strong>姓名：</strong>{{poor.name}}</li>
+              <li class="list-group-item"><strong>性别：</strong>{{poor.sex | sex}}</li>
+              <li class="list-group-item"><strong>与户主关系：</strong>{{poor.familyRelation | familyRelation}}</li>
+              <li class="list-group-item"><strong>身份证号码：</strong>{{poor.idNumber}}</li>
+              <li class="list-group-item"><strong>健康状况：</strong>{{poor.healthInfo | healthInfo}}</li>
+              <li class="list-group-item"><strong>劳动技能：</strong>{{poor.workSkills | workSkills}}</li>
+              <li class="list-group-item"><strong>在校生状况：</strong>{{poor.grade | grade}}</li>
+              <li class="list-group-item" v-if="poor.workMonth"><strong>务工时间：</strong>{{poor.workMonth}}个月</li>
+              <li class="list-group-item" v-if="poor.companyName"><strong>务工企业名称：</strong>{{poor.companyName}}</li>
+              <li class="list-group-item" v-if="poor.isMini==1"><strong>享受低保人员：</strong>是</li>
+            </ul>
+        </section>
+
+        <section>
+          <div class="alert alert-info" role="alert">两不愁三保障</div>
+            <ul class="list-group">
+              <li class="list-group-item"><strong>住房面积：</strong>{{poorFamily.houseArea}}</li>
+              <li class="list-group-item"><strong>距离主干道距离：</strong>{{poorFamily.distanceFromRoad}}</li>
+              <li class="list-group-item"><strong>是否危房：</strong>{{poorFamily.isDangerHouse | isDangerHouse}}</li>
+              <li class="list-group-item" ><strong>是否有安全饮水：</strong>
+              {{poorFamily.isSafeWater | isDangerHouse}}</li>
+              <li class="list-group-item" ><strong>是否饮水困难：</strong>
+              {{poorFamily.isDifficultWater | isDangerHouse}}</li>
+            </ul>
+        </section>
+
+        <section>
+          <div class="alert alert-info" role="alert">收入</div>
+            <ul class="list-group">
+              <li class="list-group-item"><strong>低保金：</strong>{{poorFamily.minimumFund}}</li>
+              <li class="list-group-item"><strong>五保金：</strong>{{poorFamily.fiveFund}}</li>
+              <li class="list-group-item"><strong>养老金：</strong>{{poorFamily.oldAgeFund}}</li>
+              <li class="list-group-item"><strong>生产经营性收入：</strong>{{poorFamily.sellIncome}}</li>
+              <li class="list-group-item"><strong>生产经营支出：</strong>{{poorFamily.expend}}</li>
+              <li class="list-group-item"><strong>工资收入：</strong>{{poorFamily.salaryIncome}}</li>
+              <li class="list-group-item"><strong>财产性收入：</strong>{{poorFamily.resourceIncome}}</li>
+              <li class="list-group-item"><strong>转移性收入：</strong>{{poorFamily.transferIncome}}</li>
+              <li class="list-group-item"><strong>人均纯收入：</strong>{{poorFamily.averageFund}}</li>
+            </ul>
+        </section>
+
+        <section>
+          <div class="alert alert-info" role="alert">家庭其他信息</div>
+            <ul class="list-group">
+              <li class="list-group-item"><strong>林果面积：</strong>{{poorFamily.fruitArea}}</li>
+              <li class="list-group-item"><strong>牧草面积：</strong>{{poorFamily.grassArea}}</li>
+              <li class="list-group-item"><strong>耕地面积：</strong>{{poorFamily.cultivatedArea}}</li>
+              <li class="list-group-item"><strong>林地面积：</strong>{{poorFamily.forestlandArea}}</li>
+              <li class="list-group-item"><strong>水面面积：</strong>{{poorFamily.poolArea}}</li>
+            </ul>
+        </section>
+    </div>
+    <div class="loading" v-show="isLoading">查询中...</div>
+    </article>
+  </body>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <script src="js/vue-resource.js"></script>
+  <script type="text/javascript" src="js/const.js"></script>
+  <script type="text/javascript" src="js/login.js"></script>
+  <script type="text/javascript" src="js/poorFamily.js"></script>
+</html>
