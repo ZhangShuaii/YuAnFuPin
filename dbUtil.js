@@ -14,6 +14,7 @@ exports.getDB_URL = function(){
 
 var MongoClient = require('mongodb').MongoClient;
 exports.connectDB = function(DB_NAME,optionFun){
+
 	MongoClient.connect(DB_URL+DB_NAME,function(err,db){
 		if(err){
 			console.log('链接到数据库失败!');

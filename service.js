@@ -83,11 +83,15 @@ exports.selectPoor = function(params,res){
 var loginDB = require('./loginDB');
 var md5= require('js-md5');
 exports.login = function(user,res){
+	user.password = user.password || '';
+	user.loginId = user.loginId || '';
+	
 	var loginId = user.loginId;
-
 	userDB.getUser(loginId,function(results){
 		if(results.status){
 			var dbUser = results.results;
+			//bug password为null
+
 			if(dbUser.password == user.password){
 				var sessionId = md5(user.loginId + new Date());
 				var params = {};

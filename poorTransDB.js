@@ -34,6 +34,7 @@ exports.add = function(dataArr){
 			if(err){
 				console.log(err);
 			}
+			console.log(result);
 		});
 	});
 };
