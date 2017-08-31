@@ -34,7 +34,7 @@ var basePost = function(url,data,success,vm){
 		if(data.body.status){
 			success(data.body.results);
 		}else{
-			alert(data.body.errMsg.message || data.body.errMsg);
+			alert(data.body.errMsg);
 			if(data.body.isReload){
 				localStorage.targetHref = location.href;
 				location.href = '/';

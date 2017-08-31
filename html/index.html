@@ -36,6 +36,8 @@
             <a class="btn  btn-link" v-on:click="toChangePwd" v-if="isChangePwd">返回登录</a>
           </div>
           <button class="btn btn-lg btn-primary btn-block"  type="submit" v-if="!isChangePwd">登录</button>
+            <a class="btn  btn-success btn-lg btn-block"  href="/relative">切换帮扶联系人登录</a>
+
           <button class="btn btn-lg btn-primary btn-block" v-on:click="changePwd" v-if="isChangePwd">修改密码</button>
         </form>
       </div>

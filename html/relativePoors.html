@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>包保贫困户</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/poor.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <style type="text/css">
+  </style>
+  <body>
+    <article id="relativePoor">
+      <div class="container ">
+        <h2 class="text-center col-xl-12">{{relative.name}}</h2>
+          <div class="alert alert-info" role="alert">帮扶联系人信息</div>
+            <ul class="list-group" >
+              <li class="list-group-item"><strong>单位：</strong>{{relative.org}}</li>
+              <li class="list-group-item"><strong>联系乡镇：</strong>{{relative.townName}}</li>
+              <li class="list-group-item"><strong>帮扶户数：</strong>{{relative.familys.length}}</li>
+            </ul>
+        </section>
+      <br>
+      <div class="alert alert-info" role="alert">帮扶贫困户</div>
+      <table class="table table-bordered table-hover questionTable ">
+        <thead>
+          <tr >
+            <th >乡镇</th>
+            <th >姓名</th>
+            <th >身份证号码</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for = "(resultPoor,index) in relative.familys"  @click="linkPoor(resultPoor.familyCode)" >
+            <td >{{resultPoor.townName}}</td>
+            <td >{{resultPoor.name}}</td>
+            <td >{{resultPoor.idNumber}}</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      
+    </article>
+  </body>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <script src="js/vue-resource.js"></script>
+  <script type="text/javascript" src="js/const.js"></script>
+  <script type="text/javascript" src="js/relativePoors.js"></script>
+</html>
