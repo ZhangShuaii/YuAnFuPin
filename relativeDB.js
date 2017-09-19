@@ -13,7 +13,7 @@ exports.getRelative = function(tel,callback){
 	dbUtil.connectDB(DB_NAME,function(db){
 		var tabUser = db.collection(TAB_NAME);
 		console.log(tel);
-		tabUser.findOne({tel:tel},function(err,optResult){
+		tabUser.find({tel:tel}).toArray(function(err,optResult){
 			dbUtil.resultCheck(err,optResult,callback);
 		});
 	});

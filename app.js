@@ -36,6 +36,15 @@ app.get('/transPoor',function(req,res){
 	res.send('转换中');
 });
 
+
+app.get('/relative',function(req,res){
+	res.sendFile(HTML_PATH + 'relativeLogin.html');
+});
+
+app.get('/relativePoors',function(req,res){
+	res.sendFile(HTML_PATH + 'relativePoors.html');
+});
+
 app.get('*',function(req,res){
 	res.send('404 not found');
 });
@@ -45,20 +54,24 @@ app.get('*',function(req,res){
 * 每个post之前验证登录情况
 * login 和 loginCheck 不能用此接口
 */
-var basePost = function(req,res,callBack){
+var basePost = function(req,res,callBack,isRelative){
 	var post = '';
 	req.on('data', function(chunk){    
 	       post += chunk;
 	});
 	req.on('end', function(){   
 	    post = JSON.parse(post||'{}');
-	    service.checkLogin(post,res,function(results){
-	    	if(results.status){
-	    		callBack(post);
-	    	}else{
-	    		res.send(results);
-	    	}
-	    });
+	    if(isRelative){
+	    	callBack(post);
+	    }else{
+	    	service.checkLogin(post,res,function(results){
+	    		if(results.status){
+	    			callBack(post);
+	    		}else{
+	    			res.send(results);
+	    		}
+	    	});
+	    }
 	});
 }
 
@@ -106,6 +119,12 @@ app.post('/getQuestionTab',function(req,res){
 	basePost(req,res,function(postData){
 		service.getQuestionTab(postData,res);
 	});
+});
+
+app.post('/getRelative',function(req,res){
+	basePost(req,res,function(postData){
+		service.getRelative(postData,res);
+	},true);
 });
 
 app.post('/login',function(req,res){

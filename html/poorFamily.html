@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <title>贫困户信息</title>
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/poorFamily.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <style type="text/css">
@@ -26,7 +25,7 @@
         </section>
 
         <section>
-          <div class="alert alert-info" role="alert">成员信息</div>
+          <div class="alert alert-info" role="alert">成员信息：{{poorFamily.poorFamilyMember.length}}人</div>
             <ul class="list-group" v-for="poor in poorFamily.poorFamilyMember">
               <li class="list-group-item"><strong>姓名：</strong>{{poor.name}}</li>
               <li class="list-group-item"><strong>性别：</strong>{{poor.sex | sex}}</li>

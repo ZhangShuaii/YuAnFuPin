@@ -1,4 +1,4 @@
-var isPublic = false;
+var isPublic = true;
 
 if(isPublic){
 	var DB_URL = 'mongodb://localhost:27017/',
@@ -22,6 +22,7 @@ exports.connectDB = function(DB_NAME,optionFun){
 			return;
 		}
 		optionFun(db);
+		//转换帮扶联系人时注释掉
 		db.close();
 	});
 };
@@ -31,6 +32,7 @@ exports.getHTMLPath = function(){
 }
 
 exports.paramCheck = function(param,attrs){
+	attrs = attrs || [];
 	var returnData = {
 		status:true
 	};

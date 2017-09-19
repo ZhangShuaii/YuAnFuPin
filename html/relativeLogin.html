@@ -13,14 +13,34 @@
     <div class="container index-h1">
       <h1 class="text-center  text-primary">裕安区帮扶干部</h1>
     </div>    
-      <div class="container">
-        <form  id="loginForm" class="form-signin" v-on:submit.prevent="login">
-
+      <div class="container" id="loginForm">
+        <form   class="form-signin" v-on:submit.prevent="login" v-if="!isMany" >
           <label for="inputEmail" class="sr-only">登录账号</label>
           <input type="text"  class="form-control" placeholder="手机号码" required autofocus value="" v-model="tel">
           <br>
           <button class="btn btn-lg btn-primary btn-block"  type="submit" >登录</button>
         </form>
+          <div v-if ="isMany" >
+            <div class="alert alert-info" role="alert">
+              存在重复录入的帮扶联系人，请选择：
+            </div>
+            <table class="table table-bordered table-hover questionTable " >
+              <thead>
+                <tr >
+                  <th >姓名</th>
+                  <th >单位</th>
+                  <th >联系乡镇</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for = "(relative,index) in relatives"  @click="linkRelativePoors(index)" >
+                  <td >{{relative.name}}</td>
+                  <td >{{relative.org}}</td>
+                  <td >{{relative.townName}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
       </div>
   </body>
   <script type="text/javascript" src="js/vue.js"></script>

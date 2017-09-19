@@ -1,4 +1,12 @@
 var userDB = require('./userDB');
+var dbUtil = require('./dbUtil');
+var returnErr = function(msg){
+	return {
+		status:false,
+		errMsg:msg
+	}
+};
+
 /*
 *查询所有用户列表
 */
@@ -82,16 +90,21 @@ exports.selectPoor = function(params,res){
 */
 var loginDB = require('./loginDB');
 var md5= require('js-md5');
+
 exports.login = function(user,res){
 	user.password = user.password || '';
 	user.loginId = user.loginId || '';
 	
 	var loginId = user.loginId;
+
 	userDB.getUser(loginId,function(results){
 		if(results.status){
 			var dbUser = results.results;
-			//bug password为null
-
+			var returnData = dbUtil.paramCheck(dbUser,['password']);
+			if(!returnData.status){
+				res.send(returnErr('账号或密码错误'));
+				return;
+			}
 			if(dbUser.password == user.password){
 				var sessionId = md5(user.loginId + new Date());
 				var params = {};
@@ -107,16 +120,11 @@ exports.login = function(user,res){
 					});
 				});
 			}else{
-				res.send({
-					status:false,
-					errMsg:'账号或密码错误'
-				});
+				res.send(returnErr('账号或密码错误'));
+				return;
 			}
 		}else{
-			res.send({
-				status:false,
-				errMsg:'用户不存在'
-			});
+			res.send(returnErr('用户不存在'));
 		}
 	});
 };
@@ -126,6 +134,7 @@ exports.checkLogin =function(params,res,callBack){
 		if(results.status){
 			//6小时
 			var overtime = 1000*60*60*6;
+			results.results = results.results||[];
 			if(results.results.length==0 || ((new Date() - results.results.timestamp) > overtime)){
 				results.status = false;
 				results.errMsg = '身份验证过期，请重新登录';
@@ -155,3 +164,28 @@ exports.getQuestionTab = function(postData,res){
 		res.send(results);
 	});
 };
+
+var relativeDB = require('./relativeDB');
+exports.getRelative = function(postData,res){
+	var tel = postData.tel;
+	var returnData = dbUtil.paramCheck(tel);
+	if(!returnData.status){
+		res.send(returnErr('请输入电话号码'));
+		return;
+	}
+	relativeDB.getRelative(tel,function(results){
+		if(results.status && (results.results!=null)){
+			var sessionId = md5(tel + new Date());
+			var params = {};
+			params.loginId = tel;
+			params.sessionId = sessionId;
+			loginDB.setLogin(params,function(){
+				results.sessionId = sessionId;
+				res.send(results);
+			});
+		}else{
+			res.send(returnErr('未录入该帮扶联系人'));
+			return;
+		}
+	});
+}

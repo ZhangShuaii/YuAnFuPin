@@ -120,6 +120,7 @@ var poorFamilyVue = new Vue({
 	el:"#poorFamily",
 	data:{
 		poorFamily:{
+			poorFamilyMember:[]
 		},
 		isLoading:false
 	},

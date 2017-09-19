@@ -21,8 +21,10 @@
             </ul>
         </section>
       <br>
-      <div class="alert alert-info" role="alert">帮扶贫困户</div>
-      <table class="table table-bordered table-hover questionTable ">
+      <div class="alert alert-info" role="alert">
+        当前帮扶的贫困户 ： {{nowRelative.length}} 户
+      </div>
+      <table class="table table-bordered table-hover questionTable " v-if="nowRelative.length>0">
         <thead>
           <tr >
             <th >乡镇</th>
@@ -31,7 +33,27 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for = "(resultPoor,index) in relative.familys"  @click="linkPoor(resultPoor.familyCode)" >
+          <tr v-for = "(resultPoor,index) in nowRelative"  @click="linkPoor(resultPoor.familyCode)" >
+            <td >{{resultPoor.townName}}</td>
+            <td >{{resultPoor.name}}</td>
+            <td >{{resultPoor.idNumber}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="alert alert-info" role="alert">
+        不再帮扶的贫困户 ： {{historyRelative.length}} 户
+      </div>
+      <table class="table table-bordered table-hover questionTable " v-if="historyRelative.length>0">
+        <thead>
+          <tr >
+            <th >乡镇</th>
+            <th >姓名</th>
+            <th >身份证号码</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for = "(resultPoor,index) in historyRelative"  @click="linkPoor(resultPoor.familyCode)" >
             <td >{{resultPoor.townName}}</td>
             <td >{{resultPoor.name}}</td>
             <td >{{resultPoor.idNumber}}</td>
