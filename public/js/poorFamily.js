@@ -1,5 +1,11 @@
 ﻿Vue.filter('isOut', function(value) {
-    return value==0?'未脱贫':'已脱贫';
+	var map = {
+		'0':'未脱贫',
+		'1':'已脱贫',
+		'3':'返贫',
+		'4':'稳定脱贫'
+	};
+    return map[value];
 });
 
 Vue.filter('isDangerHouse', function(value) {

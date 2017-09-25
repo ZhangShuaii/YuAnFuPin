@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <style type="text/css">
+  .padding{
+    text-indent: 20px;
+  }
   </style>
   <body>
     <article id="poorFamily">
@@ -17,10 +20,13 @@
             <ul class="list-group">
               <li class="list-group-item"><strong>乡镇：</strong>{{poorFamily.townName}}</li>
               <li class="list-group-item"><strong>行政村：</strong>{{poorFamily.villageName}}</li>
-              <li class="list-group-item"><strong>是否脱贫：</strong>{{poorFamily.isOut | isOut}}</li>
-              <li class="list-group-item" v-if="poorFamily.isOut==1"><strong>脱贫年度：</strong>{{poorFamily.outPoorYear}}</li>
+              <li class="list-group-item"><strong>脱贫属性：</strong>{{poorFamily.isOut | isOut}}</li>
+              <li class="list-group-item" v-if="poorFamily.isOut==1 || poorFamily.isOut==4"><strong>脱贫年度：</strong>{{poorFamily.outPoorYear}}</li>
               <li class="list-group-item"><strong>贫困户属性：</strong>{{poorFamily.poorAttr | poorAttr}}</li>
               <li class="list-group-item"><strong>主要致贫原因：</strong>{{poorFamily.mainReason | mainReason}}</li>
+              <li class="list-group-item"><strong>联系号码：</strong>{{poorFamily.phoneNumber}}</li>
+              <li class="list-group-item"><strong>开户行名称：</strong>{{poorFamily.bankCardName}}</li>
+              <li class="list-group-item"><strong>银行卡号：</strong>{{poorFamily.bankCardId}}</li>
             </ul>
         </section>
 
@@ -41,29 +47,36 @@
         </section>
 
         <section>
-          <div class="alert alert-info" role="alert">两不愁三保障</div>
+          <div class="alert alert-info" role="alert">生活保障</div>
             <ul class="list-group">
               <li class="list-group-item"><strong>住房面积：</strong>{{poorFamily.houseArea}}</li>
               <li class="list-group-item"><strong>距离主干道距离：</strong>{{poorFamily.distanceFromRoad}}</li>
               <li class="list-group-item"><strong>是否危房：</strong>{{poorFamily.isDangerHouse | isDangerHouse}}</li>
+              <li class="list-group-item"><strong>危房等级：</strong>{{poorFamily.dangerHouseLevel}}</li>
               <li class="list-group-item" ><strong>是否有安全饮水：</strong>
               {{poorFamily.isSafeWater | isDangerHouse}}</li>
               <li class="list-group-item" ><strong>是否饮水困难：</strong>
               {{poorFamily.isDifficultWater | isDangerHouse}}</li>
+              <li class="list-group-item" ><strong>是否通生活用电：{{poorFamily.hasElectricOfLive | isDangerHouse}}</strong>
+              <li class="list-group-item" ><strong>是否通生产用电：{{poorFamily.hasElectricOfProduct | isDangerHouse}}</strong>
+              <li class="list-group-item"><strong>是否加入农民合作社：</strong>{{poorFamily.hasJoinOrg | isDangerHouse}}</li>
             </ul>
         </section>
 
         <section>
           <div class="alert alert-info" role="alert">收入</div>
             <ul class="list-group">
-              <li class="list-group-item"><strong>低保金：</strong>{{poorFamily.minimumFund}}</li>
-              <li class="list-group-item"><strong>五保金：</strong>{{poorFamily.fiveFund}}</li>
-              <li class="list-group-item"><strong>养老金：</strong>{{poorFamily.oldAgeFund}}</li>
+              <li class="list-group-item"><strong>转移性收入：</strong>{{poorFamily.transferIncome}}</li>
+              <li class="list-group-item padding"><strong> - 养老金(不计入收入)：</strong>{{poorFamily.oldAgeFund}}</li>
+              <li class="list-group-item padding"><strong> - 低保金：</strong>{{poorFamily.minimumFund}}</li>
+              <li class="list-group-item padding"><strong> - 五保金：</strong>{{poorFamily.fiveFund}}</li>
+              <li class="list-group-item padding"><strong> - 生态补偿金：</strong>{{poorFamily.ecologyFund}}</li>
+              <li class="list-group-item padding"><strong> - 计划生育金：</strong>{{poorFamily.familyPlanningFund}}</li>
+              <li class="list-group-item padding"><strong> - 其他转移性收入：</strong>{{poorFamily.otherTransferIncome}}</li>
               <li class="list-group-item"><strong>生产经营性收入：</strong>{{poorFamily.sellIncome}}</li>
               <li class="list-group-item"><strong>生产经营支出：</strong>{{poorFamily.expend}}</li>
               <li class="list-group-item"><strong>工资收入：</strong>{{poorFamily.salaryIncome}}</li>
               <li class="list-group-item"><strong>财产性收入：</strong>{{poorFamily.resourceIncome}}</li>
-              <li class="list-group-item"><strong>转移性收入：</strong>{{poorFamily.transferIncome}}</li>
               <li class="list-group-item"><strong>人均纯收入：</strong>{{poorFamily.averageFund}}</li>
             </ul>
         </section>
@@ -74,7 +87,9 @@
               <li class="list-group-item"><strong>林果面积：</strong>{{poorFamily.fruitArea}}</li>
               <li class="list-group-item"><strong>牧草面积：</strong>{{poorFamily.grassArea}}</li>
               <li class="list-group-item"><strong>耕地面积：</strong>{{poorFamily.cultivatedArea}}</li>
+              <li class="list-group-item"><strong>有效灌浇面积：</strong>{{poorFamily.irrigatedArea}}</li>
               <li class="list-group-item"><strong>林地面积：</strong>{{poorFamily.forestlandArea}}</li>
+              <li class="list-group-item"><strong>退耕还林面积：</strong>{{poorFamily.returnArea}}</li>
               <li class="list-group-item"><strong>水面面积：</strong>{{poorFamily.poolArea}}</li>
             </ul>
         </section>
